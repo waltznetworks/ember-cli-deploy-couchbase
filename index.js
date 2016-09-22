@@ -39,8 +39,7 @@ module.exports = {
                 revisionsKey: "revisions",
                 currentKey: "current",
                 revision: function(context) {
-                    var projectName = context.project.name();
-                    return projectName + ":" + (context.commandOptions.revision || (context.revisionData && context.revisionData.revisionKey));
+                    return (context.commandOptions.revision || (context.revisionData && context.revisionData.revisionKey));
                 },
 
                 filePattern: "index.html"
@@ -84,6 +83,35 @@ module.exports = {
                 return Promise.resolve(client.upload(indexHTMLPath, manifestKey, revisionsKey, currentKey, revision))
                     .then(this._deploySuccessMessage.bind(this, revision))
                     .catch(this._deployErrorMessage.bind(this, revision));
+            },
+
+            activate: function(context) {
+                var self = this,
+                    manifestKey = this.readConfig("manifestKey"),
+                    revisionsKey = this.readConfig("revisionsKey"),
+                    currentKey = this.readConfig("currentKey"),
+                    revision = this.readConfig("revision"),
+                    client = this.readConfig("couchbaseConnection");
+
+                return Promise.resolve(client.activate(manifestKey, revisionsKey, currentKey, revision))
+                    .then(this._activateSuccessMessage.bind(this, revision))
+                    .then(function() {
+                        return {
+                            revisionData: {
+                                activatedRevisionKey: revision
+                            }
+                        };
+                    })
+                    .catch(this._activateErrorMessage.bind(this));
+            },
+
+            _activateErrorMessage: function(revision) {
+                this._printErrorMessage("Activation failed for revision `" + revision + "`!");
+                this._printErrorMessage("Please check your couchbase settings");
+            },
+
+            _activateSuccessMessage: function(revision) {
+                this._printSuccessMessage("✔ Activated revision `" + revision + "`");
             },
 
             _deployErrorMessage: function(revisionKey) {
