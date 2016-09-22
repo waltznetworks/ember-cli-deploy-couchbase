@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-deploy-couchbase",
-  "version": "0.5.0",
+  "version": "1.0.0-alpha",
   "description": "ember-cli-deploy index-adapter for couchbase.",
   "directories": {
     "doc": "doc",
