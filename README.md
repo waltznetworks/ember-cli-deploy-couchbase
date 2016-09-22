@@ -1,6 +1,6 @@
 # ember-cli-deploy-couchbase
 
-[ember-cli-deploy](https://github.com/ember-cli/ember-cli-deploy)
+[ember-cli-deploy-couchbase](https://github.com/ember-cli/ember-cli-deploy)
 is an index-adapter for [Couchbase](http://www.couchbase.com). This
 ember-cli addon lets you deploy your ember-cli app's
 index.html to a couchbase server.
