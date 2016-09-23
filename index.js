@@ -82,7 +82,7 @@ module.exports = {
                     distDir = context.distDir,
                     indexHTMLPath = path.join(distDir, filePattern);
 
-                return RSVP.Promise.resolve(client.upload(indexHTMLPath, manifestKey, revisionsKey, currentKey, revision))
+                return RSVP.Promise.resolve(client.upload(context.project.name(), indexHTMLPath, manifestKey, revisionsKey, currentKey, revision))
                     .then(this._deploySuccessMessage.bind(this, revision))
                     .catch(this._deployErrorMessage.bind(this, revision));
             },

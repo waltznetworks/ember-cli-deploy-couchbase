@@ -43,8 +43,10 @@ $ ember deploy
 
 When you do `ember deploy production`, it will
 
-* Upload the contents of the index.html to the key
-`<project-name>:<revision>` as a doc `{ content: "<html>...." }`.
+* Upload the contents of the index.html to the key <project-name>:<revision>`
+as a doc `{ content: "<html>...." }`. Note I prefix the <project-name>, so as
+to provide some level of namespacing in Couchbase, which stores all keys in a
+flat namespace.
 * Then it will update the manifest with details of the freshly
 deployed index.html without activating it.
 
@@ -55,8 +57,8 @@ The aforementioned manifest is a doc stored in couchbase keyed by
 
 ```json
 {
-        current: "<project-name>:<sha>",
-        revisions: ["<project-name>:<sha>", "<project-name>:<sha>", "<project-name>:<sha>"]
+        current: "<sha>",
+        revisions: ["<sha1>", "<sha2>", "<sha3>"]
 }
 ```
 
