@@ -117,14 +117,14 @@ module.exports = {
             },
 
             _deployErrorMessage: function(revisionKey) {
-                this._printErrorMessage('\nFailed to upload `' + revisionKey + '`!\n');
+                this._printErrorMessage('Failed to upload `' + revisionKey + '`!\n');
                 this._printErrorMessage('Did you try to upload an already uploaded revision?\n\n');
 
                 this.log('Please run `ember deploy:list` to investigate.');
             },
 
             _deploySuccessMessage: function(revisionKey) {
-                this._printSuccessMessage('\nUpload of `' + revisionKey +'` successful!\n\n');
+                this._printSuccessMessage('Upload of `' + revisionKey +'` successful!\n\n');
             },
 
             _printErrorMessage: function(message) {
