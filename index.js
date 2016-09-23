@@ -1,7 +1,7 @@
 /* jshint node: true */
 'use strict';
 
-let DeployPluginBase = require("ember-cli-deploy-plugin"),
+var DeployPluginBase = require("ember-cli-deploy-plugin"),
     RSVP = require('rsvp'),
     CouchbaseAdapter = require('./lib/couchbase.js'),
     path = require('path');
@@ -19,7 +19,7 @@ module.exports = {
     type: 'ember-cli-deploy-addon',
 
     createDeployPlugin: function(options) {
-        let DeployPlugin = DeployPluginBase.extend({
+        var DeployPlugin = DeployPluginBase.extend({
             name: options.name,
 
             defaultConfig: {
@@ -56,7 +56,7 @@ module.exports = {
 
                 return RSVP.Promise.resolve(client.fetchRevisions(manifestKey))
                     .then(function(manifestDoc) {
-                        let revisions  = manifestDoc[revisionsKey],
+                        var revisions  = manifestDoc[revisionsKey],
                             currentRev = manifestDoc[currentKey],
                             revisions2 = revisions.map(function(revision, i) {
                                 return {
