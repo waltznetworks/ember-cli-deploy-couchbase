@@ -54,7 +54,7 @@ module.exports = {
                     currentKey = this.readConfig("currentKey"),
                     client = this.readConfig("couchbaseConnection");
 
-                return Promise.resolve(client.fetchRevisions(manifestKey))
+                return RSVP.Promise.resolve(client.fetchRevisions(manifestKey))
                     .then(function(manifestDoc) {
                         let revisions  = manifestDoc[revisionsKey],
                             currentRev = manifestDoc[currentKey],
@@ -82,7 +82,7 @@ module.exports = {
                     distDir = context.distDir,
                     indexHTMLPath = path.join(distDir, filePattern);
 
-                return Promise.resolve(client.upload(indexHTMLPath, manifestKey, revisionsKey, currentKey, revision))
+                return RSVP.Promise.resolve(client.upload(indexHTMLPath, manifestKey, revisionsKey, currentKey, revision))
                     .then(this._deploySuccessMessage.bind(this, revision))
                     .catch(this._deployErrorMessage.bind(this, revision));
             },
@@ -95,7 +95,7 @@ module.exports = {
                     revision = this.readConfig("revision"),
                     client = this.readConfig("couchbaseConnection");
 
-                return Promise.resolve(client.activate(manifestKey, revisionsKey, currentKey, revision))
+                return RSVP.Promise.resolve(client.activate(manifestKey, revisionsKey, currentKey, revision))
                     .then(this._activateSuccessMessage.bind(this, revision))
                     .then(function() {
                         return {
