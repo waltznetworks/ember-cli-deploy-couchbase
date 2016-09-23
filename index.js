@@ -54,15 +54,17 @@ module.exports = {
                     currentKey = this.readConfig("currentKey"),
                     client = this.readConfig("couchbaseConnection");
 
-                return Promise.resolve(client.fetchRevisions(manifestKey, revisionsKey, currentKey))
-                    .then(function(revisions, current) {
-                        var transformedRevisions = revisions.map(function(revision, i) {
-                            return {
-                                revision: revision,
-                                active: revision === current
-                            };
-                        });
-                        return { revisions: transformedRevisions };
+                return Promise.resolve(client.fetchRevisions(manifestKey))
+                    .then(function(manifestDoc) {
+                        let revisions  = manifestDoc[revisionsKey],
+                            currentRev = manifestDoc[currentKey],
+                            revisions2 = revisions.map(function(revision, i) {
+                                return {
+                                    revision: revision,
+                                    active: revision === currentRev
+                                };
+                            });
+                        return { revisions: revisions2 };
                     })
                     .catch(function() {
                         return { revisions: null };
