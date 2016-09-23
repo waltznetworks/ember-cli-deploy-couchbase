@@ -15,7 +15,7 @@ For more information on what plugins are and how they work, please refer to the 
 
 To get up and running quickly, do the following:
 
-- Ensure [ember-cli-deploy >= 0.6.0][3] is installed.
+- Ensure [ember-cli-deploy >= 0.5.0][3] is installed.
 - Ensure [ember-cli-deploy-build][4] is installed and configured.
 
 - Install this plugin
@@ -28,8 +28,8 @@ $ ember install ember-cli-deploy-redis
 
 ```javascript
 ENV.couchbase = {
-    host: 'couchbase://development.couchbase.server.local',
-    bucketName: '<mybucketname>'
+    "host": "couchbase://<couchbase url, ip address>",
+    "bucketName": "<mybucketname>"
 }
 ```
 
@@ -37,12 +37,6 @@ ENV.couchbase = {
 
 ```bash
 $ ember deploy
-```
-
-## Installation
-
-```bash
-$ ember install ember-cli-deploy-couchbase
 ```
 
 ## How it works?
@@ -145,9 +139,9 @@ This has been tested with Node.js v4.5.0, Couchbase v3.0.1,
 ExpressJS v4.12.3. Note this is still tagged as alpha till we cookup some
 unit tests.
 
-[1]: http://ember-cli-deploy.com/docs/v0.6.x/the-lightning-strategy/ "ember-cli-deploy-lightning-pack"
+[1]: http://ember-cli-deploy.com/docs/v1.0.0-beta.1/the-lightning-strategy/ "ember-cli-deploy-lightning-pack"
 [2]: http://ember-cli.github.io/ember-cli-deploy/plugins "Plugin Documentation"
-[3]: http://ember-cli-deploy.com/docs/v0.6.x/ "ember-cli-deploy >= 0.6.0"
+[3]: http://ember-cli-deploy.com/docs/v1.0.0/ "ember-cli-deploy >= 0.5.0"
 [4]: https://github.com/ember-cli-deploy/ember-cli-deploy-build "ember-cli-deploy-build"
 [5]: https://github.com/ember-cli/ember-cli-deploy "ember-cli-deploy"
 [6]: https://github.com/ember-cli-deploy/ember-cli-deploy-revision-data "ember-cli-deploy-revision-data"
