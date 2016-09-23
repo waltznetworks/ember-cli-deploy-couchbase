@@ -3,7 +3,7 @@
 
 var DeployPluginBase = require("ember-cli-deploy-plugin"),
     RSVP = require('rsvp'),
-    CouchbaseAdapter = require('./lib/couchbase.js'),
+    CouchbaseAdapter = require('./lib/couchbase-adapter.js'),
     path = require('path');
 
 
