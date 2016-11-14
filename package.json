@@ -13,7 +13,7 @@
   },
   "repository": "https://github.com/waltznetworks/ember-cli-deploy-couchbase",
   "engines": {
-    "node": ">= 4.5.0"
+    "node": ">= 4.4.7"
   },
   "author": "Archit Baweja and Linqi Guo",
   "license": "MIT",
