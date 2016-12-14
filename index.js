@@ -26,10 +26,8 @@ module.exports = {
                 host: "127.0.0.1",
                 port: "8091",
                 couchbaseConnection: function(context) {
-                    var host = this.readConfig("host");
-                    var bucketName = this.readConfig("bucketName");
-                    return new CouchbaseAdapter({ host: host,
-                                                  bucketName: bucketName });
+                    return new CouchbaseAdapter({ host: context.config.couchbase.host,
+                                                  bucketName: context.config.couchbase.bucketName });
                 },
 
                 manifestKey: function(context) {
