@@ -21,7 +21,7 @@ To get up and running quickly, do the following:
 - Install this plugin
 
 ```bash
-$ ember install ember-cli-deploy-redis
+$ ember install ember-cli-deploy-couchbase
 ```
 
 - Place the following configuration into `config/deploy.js`
@@ -43,8 +43,8 @@ $ ember deploy
 
 When you do `ember deploy production`, it will
 
-* Upload the contents of the index.html to the key <project-name>:<revision>`
-as a doc `{ content: "<html>...." }`. Note I prefix the <project-name>, so as
+* Upload the contents of the index.html to the key `<project-name>:<revision>`
+as a doc `{ content: "<html>...." }`. Note I prefix the `<project-name>`, so as
 to provide some level of namespacing in Couchbase, which stores all keys in a
 flat namespace.
 * Then it will update the manifest with details of the freshly
